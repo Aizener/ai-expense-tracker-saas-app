@@ -7,7 +7,7 @@ import Nav from './app-nav';
 
 function AppHeader() {
   return (
-    <header className="flex items-center justify-between border-b fixed left-0 top-0 w-full h-16 px-8 bg-white">
+    <header className="flex items-center justify-between border-b fixed left-0 top-0 z-50 w-full h-16 px-8 bg-white">
       <div className="flex items-center gap-x-2">
         <div className="flex p-2 rounded-md bg-gradient-to-tr from-blue-500 via-sky-500 to-blue-400">
           <BadgeDollarSign color='white' size="32" />
