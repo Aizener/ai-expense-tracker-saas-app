@@ -2,8 +2,8 @@
 
 import { useEffect,useState } from 'react';
 
-// import { generateInsightAnswer } from '@/app/actions/generateInsightAnswer';
-// import { getAIInsights } from '@/app/actions/getAIInsights';
+import { generateInsightAnswer } from '@/actions/generateInsightAnswer';
+import { getAIInsights } from '@/actions/getAllInsights';
 
 interface InsightData {
   id: string;
@@ -27,41 +27,38 @@ const AIInsights = () => {
   const [aiAnswers, setAiAnswers] = useState<AIAnswer[]>([]);
 
   const loadInsights = async () => {
-    // setIsLoading(true);
-    // try {
-    //   const newInsights = await getAIInsights();
-    //   setInsights(newInsights);
-    //   setLastUpdated(new Date());
-    // } catch (error) {
-    //   console.error('❌ AIInsights: Failed to load AI insights:', error);
-    //   // Fallback to mock data if AI fails
-    //   setInsights([
-    //     {
-    //       id: 'fallback-1',
-    //       type: 'info',
-    //       title: 'AI Temporarily Unavailable',
-    //       message:
-    //         'We\'re working to restore AI insights. Please check back soon.',
-    //       action: 'Try again later',
-    //     },
-    //   ]);
-    // } finally {
-    //   setIsLoading(false);
-    // }
+    setIsLoading(true);
+    try {
+      const newInsights = await getAIInsights();
+      setInsights(newInsights);
+      setLastUpdated(new Date());
+    } catch (error) {
+      console.error('❌ AIInsights: Failed to load AI insights:', error);
+      // Fallback to mock data if AI fails
+      setInsights([
+        {
+          id: 'fallback-1',
+          type: 'info',
+          title: 'AI Temporarily Unavailable',
+          message:
+            'We\'re working to restore AI insights. Please check back soon.',
+          action: 'Try again later',
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleActionClick = async (insight: InsightData) => {
     if (!insight.action) return;
 
-    // Check if answer is already loading or exists
     const existingAnswer = aiAnswers.find((a) => a.insightId === insight.id);
     if (existingAnswer) {
-      // Remove the answer if it already exists (toggle functionality)
       setAiAnswers((prev) => prev.filter((a) => a.insightId !== insight.id));
       return;
     }
 
-    // Add loading state
     setAiAnswers((prev) => [
       ...prev,
       {
@@ -72,17 +69,15 @@ const AIInsights = () => {
     ]);
 
     try {
-      // Generate question based on insight title and action
       const question = `${insight.title}: ${insight.action}`;
 
-      // Use server action to generate AI answer
-      // const answer = await generateInsightAnswer(question);
+      const answer = await generateInsightAnswer(question);
 
-      // setAiAnswers((prev) =>
-      //   prev.map((a) =>
-      //     a.insightId === insight.id ? { ...a, answer, isLoading: false } : a
-      //   )
-      // );
+      setAiAnswers((prev) =>
+        prev.map((a) =>
+          a.insightId === insight.id ? { ...a, answer, isLoading: false } : a
+        )
+      );
     } catch (error) {
       console.error('❌ Failed to generate AI answer:', error);
       setAiAnswers((prev) =>
@@ -156,11 +151,11 @@ const AIInsights = () => {
     const diffMs = now.getTime() - lastUpdated.getTime();
     const diffMins = Math.floor(diffMs / 60000);
 
-    if (diffMins < 1) return 'Just now';
-    if (diffMins < 60) return `${diffMins}m ago`;
+    if (diffMins < 1) return '刚刚';
+    if (diffMins < 60) return `${diffMins}分钟前`;
 
     const diffHours = Math.floor(diffMins / 60);
-    if (diffHours < 24) return `${diffHours}h ago`;
+    if (diffHours < 24) return `${diffHours}小时前`;
 
     return lastUpdated.toLocaleDateString();
   };
@@ -227,10 +222,10 @@ const AIInsights = () => {
           </div>
           <div>
             <h3 className='text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100'>
-              AI Insights
+              AI分析
             </h3>
             <p className='text-xs text-gray-500 dark:text-gray-400 mt-0.5'>
-              AI financial analysis
+              通过AI对您的消费进行分析
             </p>
           </div>
         </div>
@@ -291,7 +286,7 @@ const AIInsights = () => {
                       </h4>
                       {insight.confidence && insight.confidence < 0.8 && (
                         <span className='inline-block px-2 py-0.5 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 rounded-full text-xs font-medium'>
-                          Preliminary
+                          自己合理搭配即可
                         </span>
                       )}
                     </div>
@@ -330,7 +325,7 @@ const AIInsights = () => {
                         </div>
                         <div className='flex-1'>
                           <h5 className='font-semibold text-gray-900 dark:text-gray-100 text-xs mb-1'>
-                            AI Answer:
+                            AI分析:
                           </h5>
                           {currentAnswer.isLoading ? (
                             <div className='space-y-1'>
@@ -360,14 +355,14 @@ const AIInsights = () => {
             <div className='w-5 h-5 sm:w-6 sm:h-6 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center'>
               <span className='text-sm'>🧠</span>
             </div>
-            <span className='font-medium text-xs'>Powered by AI analysis</span>
+            <span className='font-medium text-xs'>由AI驱动</span>
           </div>
           <button
             onClick={loadInsights}
             className='px-3 py-1.5 bg-gradient-to-r from-emerald-600 via-green-500 to-teal-500 hover:from-emerald-700 hover:via-green-600 hover:to-teal-600 text-white rounded-lg font-medium text-xs shadow-lg hover:shadow-xl transition-all duration-200'
           >
-            <span className='sm:hidden'>Refresh</span>
-            <span className='hidden sm:inline'>Refresh Insights →</span>
+            <span className='sm:hidden'>更新</span>
+            <span className='hidden sm:inline'>重置分析 →</span>
           </button>
         </div>
       </div>

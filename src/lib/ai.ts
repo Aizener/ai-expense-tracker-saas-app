@@ -65,10 +65,11 @@ export async function generateExpenseInsights(
     3. Money-saving opportunities
     4. Positive reinforcement for good habits
 
-    Return only valid JSON array, no additional text.`;
+    Return only valid JSON array, no additional text.
+    Taking China as an example, answer in Chinese and the unit is RMB(YUAN).`;
 
     const completion = await openai.chat.completions.create({
-      model: 'deepseek/deepseek-chat-v3-0324:free',
+      model: 'x-ai/grok-4-fast:free',
       messages: [
         {
           role: 'system',
@@ -198,10 +199,11 @@ export async function generateAIAnswer(
     3. Offers actionable advice
     4. Keeps the response concise but informative (2-3 sentences)
     
-    Return only the answer text, no additional formatting.`;
+    Return only the answer text, no additional formatting.
+    Taking China as an example, answer in Chinese and the unit is RMB(YUAN).`;
 
     const completion = await openai.chat.completions.create({
-      model: 'deepseek/deepseek-chat-v3-0324:free',
+      model: 'x-ai/grok-4-fast:free',
       messages: [
         {
           role: 'system',
