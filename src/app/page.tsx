@@ -15,14 +15,14 @@ export default async function Home() {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center gap-2 lg:gap-4 lg:px-12 lg:p-6">
+    <div className="flex flex-col lg:flex-row justify-center gap-2 px-2 py-6">
       <div className="space-y-4">
         <WelcomeBack />
         <AddNewRecord />
         <AllInsights />
         <RecordHistory />
       </div>
-      <div className="space-y-4">
+      <div className="space-y-4 flex-1">
         <RecordChart />
         <ExpenseStats />
       </div>

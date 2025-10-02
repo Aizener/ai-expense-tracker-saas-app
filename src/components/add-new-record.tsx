@@ -5,19 +5,11 @@ import { useRef, useState } from 'react';
 
 import addExpenseRecord from '@/actions/addExpenseRecord';
 import { suggestCategory } from '@/actions/suggestCategory';
+import { categories, getCategoryLabel } from '@/lib/category';
 
 import { Calendar } from './ui/calendar';
 import { Command, CommandGroup, CommandItem, CommandList } from './ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
-
-const items = [
-  { value: 'Food', label: '🍔 餐饮' },
-  { value: 'Transportation', label: '🚗 交通消费' },
-  { value: 'Shopping', label: '🛒 购物' },
-  { value: 'Entertainment', label: '🎬 娱乐' },
-  { value: 'Healthcare', label: '🏥 健康' },
-  { value: 'Other', label: '📦 其他' },
-];
 
 function AddNewRecord() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -202,7 +194,7 @@ function AddNewRecord() {
                 <div
                   className='w-full flex justify-between px-3 py-2.5 bg-white/70 dark:bg-gray-800/70 border-2 border-gray-200/80 dark:border-gray-600/80 rounded-xl focus:ring-2 focus:ring-emerald-500/30 focus:bg-white dark:focus:bg-gray-700/90 focus:border-emerald-400 dark:focus:border-emerald-400 text-gray-900 dark:text-gray-100 text-sm shadow-sm hover:shadow-md transition-all duration-200 mb-0 h-auto!'
                 >
-                  <span>{category ? items.find(item => item.value === category)?.label : '请选择分类...'}</span>
+                  <span>{category ? getCategoryLabel(category) : '请选择分类...'}</span>
                   <span>⭐</span>
                 </div>
               </PopoverTrigger>
@@ -211,7 +203,7 @@ function AddNewRecord() {
                   <CommandList>
                     <CommandGroup>
                       {
-                        items.map((item, key) => (
+                        categories.map((item, key) => (
                           <CommandItem
                             key={key}
                             value={item.value}

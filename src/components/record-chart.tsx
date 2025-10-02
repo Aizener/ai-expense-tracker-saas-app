@@ -1,11 +1,9 @@
-// import getRecords from '@/app/actions/getRecords';
+import getRecords from '@/actions/getRecords';
 
-// import BarChart from './BarChart'; // Ensure BarChart.tsx or BarChart.jsx exists in the same directory
+import BarChart from './bar-chart';
 
 const RecordChart = async () => {
-  // const { records, error } = await getRecords();
-  const records: string | unknown[] = [];
-  const error = null;
+  const { records, error } = await getRecords();
 
   if (error) {
     return (
@@ -85,12 +83,12 @@ const RecordChart = async () => {
         </div>
       </div>
       <div className='overflow-x-auto'>
-        {/* <BarChart
+        <BarChart
           records={records.map((record) => ({
             ...record,
             date: String(record.date),
           }))}
-        /> */}
+        />
       </div>
     </div>
   );
