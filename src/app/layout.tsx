@@ -32,7 +32,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased pt-16 flex flex-col min-h-screen`}>
         <ProviderContainer>
           <AppHeader />
-          <main className="flex-1">
+          <main className="flex-1 w-full max-w-7xl mx-auto">
             {children}
           </main>
           <AppFooter />
