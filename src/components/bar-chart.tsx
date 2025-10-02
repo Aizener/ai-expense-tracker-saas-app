@@ -95,12 +95,12 @@ function BarChart({ records }: { records: Record[] }) {
   const aggregatedData = aggregateByDate(records);
 
   const getAmountColor = (amount: number) => {
-    if (amount > 200)
+    if (amount > 100)
       return {
         bg: isDark ? 'rgba(255, 99, 132, 0.3)' : 'rgba(255, 99, 132, 0.2)',
         border: isDark ? 'rgba(255, 99, 132, 0.8)' : 'rgba(255, 99, 132, 1)',
       };
-    if (amount > 100)
+    if (amount > 70)
       return {
         bg: isDark ? 'rgba(255, 206, 86, 0.3)' : 'rgba(255, 206, 86, 0.2)',
         border: isDark ? 'rgba(255, 206, 86, 0.8)' : 'rgba(255, 206, 86, 1)',

@@ -20,11 +20,11 @@ export default async function Home() {
         <WelcomeBack />
         <AddNewRecord />
         <AllInsights />
-        <RecordHistory />
       </div>
       <div className="space-y-4 flex-1">
         <RecordChart />
         <ExpenseStats />
+        <RecordHistory />
       </div>
     </div>
   );
