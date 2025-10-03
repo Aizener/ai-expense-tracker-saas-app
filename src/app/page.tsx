@@ -8,11 +8,16 @@ import RecordChart from '@/components/record-chart';
 import RecordHistory from '@/components/record-history';
 import WelcomeBack from '@/components/welcome-back';
 
-export default async function Home() {
+export default async function Home({
+  searchParams
+}: {
+  searchParams: Promise<{ page?: string }>
+}) {
   const user = await currentUser();
   if (!user) {
     return <Guest />;
   }
+  const { page } = await searchParams;
 
   return (
     <div className="flex flex-col justify-center gap-4 px-2 py-6">
@@ -27,7 +32,7 @@ export default async function Home() {
         </div>
       </div>
       <AllInsights />
-      <RecordHistory />
+      <RecordHistory page={Number(page)} />
     </div>
   );
 }

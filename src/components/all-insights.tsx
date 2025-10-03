@@ -4,6 +4,7 @@ import { useEffect,useState } from 'react';
 
 import { generateInsightAnswer } from '@/actions/generateInsightAnswer';
 import { getAIInsights } from '@/actions/getAllInsights';
+import { useUser } from '@/lib/store/user';
 
 interface InsightData {
   id: string;
@@ -20,20 +21,23 @@ interface AIAnswer {
   isLoading: boolean;
 }
 
-const AIInsights = () => {
+function AIInsights() {
   const [insights, setInsights] = useState<InsightData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [aiAnswers, setAiAnswers] = useState<AIAnswer[]>([]);
+  const { userInsights, hydrated, lastUpdate, setUserInsights, setLastUpdate } = useUser.getState();
 
   const loadInsights = async () => {
     setIsLoading(true);
     try {
       const newInsights = await getAIInsights();
       setInsights(newInsights);
+      setUserInsights(newInsights);
+      setLastUpdate(Date.now());
       setLastUpdated(new Date());
     } catch (error) {
-      console.error('❌ AIInsights: Failed to load AI insights:', error);
+      console.error('加载失败，请重新尝试:', error);
       // Fallback to mock data if AI fails
       setInsights([
         {
@@ -41,8 +45,8 @@ const AIInsights = () => {
           type: 'info',
           title: 'AI Temporarily Unavailable',
           message:
-            'We\'re working to restore AI insights. Please check back soon.',
-          action: 'Try again later',
+            '加载失败，请重新尝试。',
+          action: '刷新',
         },
       ]);
     } finally {
@@ -79,14 +83,14 @@ const AIInsights = () => {
         )
       );
     } catch (error) {
-      console.error('❌ Failed to generate AI answer:', error);
+      console.error('AI生成失败:', error);
       setAiAnswers((prev) =>
         prev.map((a) =>
           a.insightId === insight.id
             ? {
                 ...a,
                 answer:
-                  'Sorry, I was unable to generate a detailed answer. Please try again.',
+                  '抱歉，生成失败，请重新尝试。',
                 isLoading: false,
               }
             : a
@@ -96,7 +100,15 @@ const AIInsights = () => {
   };
 
   useEffect(() => {
-    loadInsights();
+    if (hydrated) {
+      if (!userInsights.length) {
+        loadInsights();
+      } else {
+        setInsights(userInsights);
+        setLastUpdated(new Date(lastUpdate!));
+        setIsLoading(false);
+      }
+    }
   }, []);
 
   const getInsightIcon = (type: string) => {

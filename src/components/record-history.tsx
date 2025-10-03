@@ -1,11 +1,12 @@
 import getRecords from '@/actions/getRecords';
-import { Record } from '@/types/record';
+import { Record as RecordType } from '@/types/record';
 
+import PaginationComp from './pagination';
 import RecordItem from './record-item';
 
-async function RecordHistory() {
-  const { records, error } = await getRecords();
 
+async function RecordHistory({ page }: { page: number }) {
+  const { records, total, error } = await getRecords(page);
   if (error) {
     return (
       <div className='bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-xl border border-gray-100/50 dark:border-gray-700/50'>
@@ -86,9 +87,12 @@ async function RecordHistory() {
         </div>
       </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4'>
-        {records.map((record: Record) => (
+        {records.map((record: RecordType) => (
           <RecordItem key={record.id} record={record} />
         ))}
+      </div>
+      <div className='mt-6 flex justify-end'> 
+        <PaginationComp page={total ? Math.ceil(total / 10) : 0} />
       </div>
     </div>
   );

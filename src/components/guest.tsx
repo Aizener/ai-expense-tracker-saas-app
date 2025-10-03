@@ -1,4 +1,5 @@
 import { SignInButton } from '@clerk/nextjs';
+import Link from 'next/link';
 
 const Guest = () => {
   return (
@@ -33,22 +34,23 @@ const Guest = () => {
                 <div className='absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200'></div>
               </button>
             </SignInButton>
-            <button className='group border-2 border-emerald-500/20 dark:border-emerald-400/20 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold transition-all duration-200 backdrop-blur-sm'>
-              了解更多
-            </button>
+            <Link href="/about" className="cursor-pointer">
+              <button className='group border-2 border-emerald-500/20 dark:border-emerald-400/20 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold transition-all duration-200 backdrop-blur-sm'>
+                了解更多
+              </button>
+            </Link>
           </div>
 
-          {/* Feature highlights */}
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto px-2 sm:px-0'>
             <div className='bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100/50 dark:border-gray-700/50'>
               <div className='w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-500 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg mb-3 sm:mb-4 mx-auto'>
                 <span className='text-white text-base sm:text-lg'>🤖</span>
               </div>
               <h3 className='text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 text-center'>
-                AI Insights
+                AI分析
               </h3>
               <p className='text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center'>
-                Smart analysis of your spending patterns
+                基于AI对消费记录进行分析
               </p>
             </div>
             <div className='bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100/50 dark:border-gray-700/50'>
@@ -56,10 +58,10 @@ const Guest = () => {
                 <span className='text-white text-base sm:text-lg'>✨</span>
               </div>
               <h3 className='text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 text-center'>
-                Auto Categories
+                自动分类
               </h3>
               <p className='text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center'>
-                Intelligent expense categorization
+                通过AI进行消费记录的分类
               </p>
             </div>
             <div className='bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100/50 dark:border-gray-700/50 sm:col-span-2 md:col-span-1'>
@@ -67,34 +69,32 @@ const Guest = () => {
                 <span className='text-white text-base sm:text-lg'>📊</span>
               </div>
               <h3 className='text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 text-center'>
-                Smart Dashboard
+                可视化
               </h3>
               <p className='text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center'>
-                Beautiful, intuitive financial overview
+                通过可视化图更直观的展示消费情况
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Frequently Asked Questions Section */}
       <section className='py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm relative overflow-hidden'>
         <div className='absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500'></div>
         <div className='max-w-4xl mx-auto'>
           <div className='text-center mb-10 sm:mb-12 md:mb-16'>
             <div className='inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6'>
               <span className='w-1.5 h-1.5 bg-emerald-500 dark:bg-emerald-400 rounded-full'></span>
-              FAQ
+              问答
             </div>
             <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-gray-100 px-2 sm:px-0'>
-              Frequently Asked{' '}
+              常见{' '}
               <span className='text-emerald-600 dark:text-emerald-400'>
-                Questions
+                问题
               </span>
             </h2>
             <p className='text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-2 sm:px-0'>
-              Everything you need to know about ExpenseTracker AI and how it can
-              transform your financial management.
+              您可能想知道的？
             </p>
           </div>
 
@@ -106,14 +106,10 @@ const Guest = () => {
                 </div>
                 <div className='flex-1'>
                   <h3 className='text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 sm:mb-3'>
-                    What is ExpenseTracker AI?
+                    什么是ExpenseTracker AI？
                   </h3>
                   <p className='text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed'>
-                    ExpenseTracker AI is an intelligent financial management
-                    tool that uses artificial intelligence to help you monitor
-                    your spending patterns, get smart category suggestions, and
-                    receive personalized insights to improve your financial
-                    health.
+                    ExpenseTracker AI是为您的消费记录进行登记、分析并提出建议的一款SAAS网站应用。
                   </p>
                 </div>
               </div>
@@ -126,14 +122,10 @@ const Guest = () => {
                 </div>
                 <div className='flex-1'>
                   <h3 className='text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 sm:mb-3'>
-                    How does the AI work?
+                    怎么样使用?
                   </h3>
                   <p className='text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed'>
-                    Our AI analyzes your spending data to automatically
-                    categorize expenses, detect patterns, and provide
-                    personalized recommendations. You can also ask the AI
-                    questions about your spending habits and get instant,
-                    intelligent responses.
+                    您只需要注册后，直接添加消费记录即可。
                   </p>
                 </div>
               </div>
@@ -146,13 +138,10 @@ const Guest = () => {
                 </div>
                 <div className='flex-1'>
                   <h3 className='text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 sm:mb-3'>
-                    Is ExpenseTracker AI free?
+                    需要收费吗?
                   </h3>
                   <p className='text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed'>
-                    Yes, ExpenseTracker AI offers a free plan with basic AI
-                    features including smart categorization and insights.
-                    Premium plans are available for advanced AI analytics and
-                    unlimited AI interactions.
+                    不需要，一切都是免费的。除非我们使用的AI进行付费了，届时将会考虑把付费功能下架。
                   </p>
                 </div>
               </div>
@@ -161,49 +150,45 @@ const Guest = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
       <section className='py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-gray-50 via-white to-emerald-50 dark:from-gray-900 dark:via-gray-800 dark:to-emerald-900/20'>
         <div className='max-w-6xl mx-auto'>
-          <div className='text-center mb-10 sm:mb-12 md:mb-16'>
+          {/* <div className='text-center mb-10 sm:mb-12 md:mb-16'>
             <div className='inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6'>
               <span className='w-1.5 h-1.5 bg-emerald-500 dark:bg-emerald-400 rounded-full'></span>
-              Testimonials
+              评价
             </div>
             <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-gray-100 px-2 sm:px-0'>
-              What Our Users{' '}
+              来自用户的{' '}
               <span className='text-emerald-600 dark:text-emerald-400'>
-                Say
+                评价
               </span>
             </h2>
             <p className='text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-2 sm:px-0'>
-              Join thousands of satisfied users who have transformed their
-              financial habits with ExpenseTracker AI.
+              使用过Expense Tracker AI的都说了这些！
             </p>
-          </div>
+          </div> */}
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'>
+          {/* <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'>
             <div className='group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-xl border border-gray-100/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-200 hover:-translate-y-1'>
               <div className='absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-green-500/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200'></div>
               <div className='relative z-10'>
                 <div className='flex items-center gap-3 mb-4'>
                   <div className='w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-500 rounded-full flex items-center justify-center shadow-lg'>
                     <span className='text-white text-xs sm:text-sm font-bold'>
-                      S
+                      雪
                     </span>
                   </div>
                   <div>
                     <div className='font-bold text-gray-900 dark:text-gray-100 text-sm sm:text-base'>
-                      Sarah L.
+                      雪千寻
                     </div>
                     <div className='text-xs sm:text-sm text-gray-500 dark:text-gray-400'>
-                      Verified User
+                      学生
                     </div>
                   </div>
                 </div>
                 <p className='text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4'>
-                  &ldquo;ExpenseTracker AI has completely transformed my
-                  budgeting. The AI insights are incredibly helpful and I now
-                  have full control over my finances!&rdquo;
+                  使用了Expense Tracker AI后，帮我纠正了零食方面多使用的钱。
                 </p>
                 <div className='flex text-emerald-500 text-xs sm:text-sm'>
                   ⭐⭐⭐⭐⭐
@@ -217,22 +202,20 @@ const Guest = () => {
                 <div className='flex items-center gap-3 mb-4'>
                   <div className='w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-500 via-teal-500 to-emerald-500 rounded-full flex items-center justify-center shadow-lg'>
                     <span className='text-white text-xs sm:text-sm font-bold'>
-                      J
+                      林
                     </span>
                   </div>
                   <div>
                     <div className='font-bold text-gray-900 dark:text-gray-100 text-sm sm:text-base'>
-                      John D.
+                      林妹妹
                     </div>
                     <div className='text-xs sm:text-sm text-gray-500 dark:text-gray-400'>
-                      Verified User
+                      职员
                     </div>
                   </div>
                 </div>
                 <p className='text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4'>
-                  &ldquo;The AI-powered insights from ExpenseTracker have helped
-                  me identify and reduce unnecessary spending. The smart
-                  categorization is amazing!&rdquo;
+                  使用了Expense Tracker AI后，我发现了我的许多浪费。
                 </p>
                 <div className='flex text-emerald-500 text-xs sm:text-sm'>
                   ⭐⭐⭐⭐⭐
@@ -267,8 +250,8 @@ const Guest = () => {
                   ⭐⭐⭐⭐⭐
                 </div>
               </div>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
       </section>
     </div>

@@ -2,26 +2,8 @@
 import { useState } from 'react';
 
 import deleteRecord from '@/actions/deleteRecord';
+import { getCategoryLabel } from '@/lib/category';
 import { Record } from '@/types/record';
-
-const getCategoryEmoji = (category: string) => {
-  switch (category) {
-    case 'Food':
-      return '🍔';
-    case 'Transportation':
-      return '🚗';
-    case 'Shopping':
-      return '🛒';
-    case 'Entertainment':
-      return '🎬';
-    case 'Bills':
-      return '💡';
-    case 'Healthcare':
-      return '🏥';
-    default:
-      return '📦';
-  }
-};
 
 const RecordItem = ({ record }: { record: Record }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -86,11 +68,8 @@ const RecordItem = ({ record }: { record: Record }) => {
           </div>
 
           <div className='flex items-center gap-2'>
-            <span className='text-base sm:text-lg'>
-              {getCategoryEmoji(record?.category)}
-            </span>
             <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
-              {record?.category}
+              {getCategoryLabel(record?.category)}
             </span>
           </div>
         </div>

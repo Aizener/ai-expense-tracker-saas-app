@@ -4,8 +4,9 @@ import { auth } from '@clerk/nextjs/server';
 import { db } from '@/lib/db';
 import { Record } from '@/types/record';
 
-async function getRecords(): Promise<{
+async function getRecords(page = 1, pageSize = 10): Promise<{
   records?: Record[];
+  total?: number;
   error?: string;
 }> {
   const { userId } = await auth();
@@ -20,10 +21,14 @@ async function getRecords(): Promise<{
       orderBy: {
         date: 'desc',
       },
-      take: 10,
+      skip: page ? (page - 1) * pageSize : 0,
+      take: pageSize,
+    });
+    const total = await db.record.count({
+      where: { userId }
     });
 
-    return { records };
+    return { records, total };
   } catch (error) {
     console.error('获取记录时出错:', error);
     return { error: '操作失败！' };

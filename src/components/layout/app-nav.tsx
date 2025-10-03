@@ -6,19 +6,19 @@ import { usePathname } from 'next/navigation';
 import { useNavs } from '@/hooks/nav';
 import { cn } from '@/lib/utils';
 
-function Nav() {
+function AppNav() {
   const pathname = usePathname();
   const { links } = useNavs();
   return (
-    <nav className="flex items-center gap-x-2 text-sm font-bold">
+    <nav className="items-center gap-x-2 text-sm font-bold hidden lg:flex">
       {
         links.map(({ href, label }) => (
           <Link
             key={href}
             href={href}
             className={cn(
-              'hover:bg-blue-400 hover:text-sky-900 px-5 py-2 rounded-md transition-[background] duration-200',
-              pathname === href ? 'bg-blue-400 text-sky-900' : '',
+              'hover:bg-emerald-500 hover:text-white px-5 py-2 rounded-md transition-[background] duration-200',
+              pathname === href ? 'bg-emerald-500 text-white' : '',
             )}
           >{label}</Link>
         ))
@@ -28,4 +28,4 @@ function Nav() {
 }
 
 
-export default Nav;
+export default AppNav;

@@ -87,7 +87,7 @@ export async function generateExpenseInsights(
 
     const response = completion.choices[0].message.content;
     if (!response) {
-      throw new Error('No response from AI');
+      throw new Error('AI服务暂时无法响应！');
     }
 
     // Clean the response by removing markdown code blocks if present
@@ -119,17 +119,17 @@ export async function generateExpenseInsights(
 
     return formattedInsights;
   } catch (error) {
-    console.error('❌ Error generating AI insights:', error);
+    console.error('AI分析失败：', error);
 
     // Fallback to mock insights if AI fails
     return [
       {
         id: 'fallback-1',
         type: 'info',
-        title: 'AI Analysis Unavailable',
+        title: '分析失败',
         message:
-          'Unable to generate personalized insights at this time. Please try again later.',
-        action: 'Refresh insights',
+          'AI分析失败，可能是服务波动，请重新尝试！',
+        action: '刷新',
         confidence: 0.5,
       },
     ];

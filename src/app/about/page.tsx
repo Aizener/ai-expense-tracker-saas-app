@@ -10,7 +10,7 @@ const AboutPage = () => {
           <div className='inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 shadow-lg'>
             <span className='w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-500 dark:bg-emerald-400 rounded-full animate-pulse'></span>
             <span className='hidden sm:inline'>带有AI的花费分析工具</span>
-            <span className='sm:hidden'>AI Technology</span>
+            <span className='sm:hidden'>AI 分析</span>
           </div>
           <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-gray-100 leading-tight'>
             关于{' '}
@@ -19,7 +19,7 @@ const AboutPage = () => {
             </span>
           </h1>
           <p className='text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0'>
-            您的智能伴侣，通过尖端的人工智能洞察力跟踪支出和管理财务。
+            您的智能伴侣，通过主流的人工智能洞察力跟踪支出和管理财务。
           </p>
           <div className='mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2 sm:px-0'>
             <Link
@@ -57,7 +57,7 @@ const AboutPage = () => {
           <div className='mt-10 grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div className='bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-green-900/20 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-800/50'>
               <div className='text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2'>
-                10K+
+                1+
               </div>
               <div className='text-gray-600 dark:text-gray-400 font-medium'>
                 活跃用户
@@ -65,7 +65,7 @@ const AboutPage = () => {
             </div>
             <div className='bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 p-6 rounded-2xl border border-green-100 dark:border-green-800/50'>
               <div className='text-3xl font-bold text-green-600 dark:text-green-400 mb-2'>
-                $2M+
+                ¥10+
               </div>
               <div className='text-gray-600 dark:text-gray-400 font-medium'>
                 分析金额
@@ -73,7 +73,7 @@ const AboutPage = () => {
             </div>
             <div className='bg-gradient-to-br from-teal-50 to-emerald-50 dark:from-teal-900/20 dark:to-emerald-900/20 p-6 rounded-2xl border border-teal-100 dark:border-teal-800/50'>
               <div className='text-3xl font-bold text-teal-600 dark:text-teal-400 mb-2'>
-                99%
+                99.9%
               </div>
               <div className='text-gray-600 dark:text-gray-400 font-medium'>
                 好评率
@@ -185,8 +185,8 @@ const AboutPage = () => {
                   <div className='w-10 h-10 bg-gradient-to-br from-teal-500 to-emerald-500 rounded-full border-2 border-white dark:border-gray-800'></div>
                 </div>
                 <div className='text-sm text-gray-600 dark:text-gray-400'>
-                  <div className='font-semibold'>有很多人信任并开始使用</div>
-                  <div>加入我！</div>
+                  <div className='font-semibold'>期待您的信任并开始使用！</div>
+                  <div>期待中...</div>
                 </div>
               </div>
             </div>
@@ -247,7 +247,7 @@ const AboutPage = () => {
 
           <div className='flex flex-col sm:flex-row gap-6 justify-center items-center'>
             <Link
-              href='/sign-up'
+              href='/'
               className='group relative overflow-hidden bg-gradient-to-r from-blue-500 via-sky-500 to-teal-400 hover:from-emerald-700 hover:via-green-600 hover:to-teal-600 text-white px-8 py-4 rounded-2xl font-bold shadow-2xl hover:shadow-3xl transition-all duration-200 transform hover:-translate-y-0.5'
             >
               <span className='relative z-10 flex items-center gap-2'>
