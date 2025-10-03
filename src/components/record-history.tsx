@@ -1,12 +1,10 @@
-// import getRecords from '@/app/actions/getRecords';
-// import { Record } from '@/types/Record';
+import getRecords from '@/actions/getRecords';
+import { Record } from '@/types/record';
 
-// import RecordItem from './RecordItem';
+import RecordItem from './record-item';
 
-const RecordHistory = async () => {
-  // const { records, error } = await getRecords();
-  const error = null;
-  const records: string | unknown[] = [];
+async function RecordHistory() {
+  const { records, error } = await getRecords();
 
   if (error) {
     return (
@@ -17,10 +15,10 @@ const RecordHistory = async () => {
           </div>
           <div>
             <h3 className='text-lg sm:text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent'>
-              Expense History
+              消费记录
             </h3>
             <p className='text-xs text-gray-500 dark:text-gray-400 mt-0.5'>
-              Your spending timeline
+              您的历史消费情况
             </p>
           </div>
         </div>
@@ -30,7 +28,7 @@ const RecordHistory = async () => {
               <span className='text-base sm:text-lg'>⚠️</span>
             </div>
             <h4 className='font-bold text-red-800 dark:text-red-300 text-sm'>
-              Error loading expense history
+              数据获取失败
             </h4>
           </div>
           <p className='text-red-700 dark:text-red-400 ml-8 sm:ml-10 text-xs'>
@@ -50,10 +48,10 @@ const RecordHistory = async () => {
           </div>
           <div>
             <h3 className='text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100'>
-              Expense History
+              消费记录
             </h3>
             <p className='text-xs text-gray-500 dark:text-gray-400 mt-0.5'>
-              Your spending timeline
+              您的历史消费情况
             </p>
           </div>
         </div>
@@ -62,11 +60,10 @@ const RecordHistory = async () => {
             <span className='text-2xl sm:text-3xl'>📊</span>
           </div>
           <h4 className='text-base sm:text-lg font-bold text-gray-800 dark:text-gray-200 mb-2'>
-            No Expense Records Found
+            暂无消费记录
           </h4>
           <p className='text-gray-600 dark:text-gray-400 max-w-md mx-auto text-sm'>
-            Start tracking your expenses to see your spending history and
-            patterns here.
+            请先添加您的消费记录，系统将会进行统计与分析。
           </p>
         </div>
       </div>
@@ -81,17 +78,17 @@ const RecordHistory = async () => {
         </div>
         <div>
           <h3 className='text-lg sm:text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent'>
-            Expense History
+            消费记录
           </h3>
           <p className='text-xs text-gray-500 dark:text-gray-400 mt-0.5'>
-            Your spending timeline
+            您的历史消费情况
           </p>
         </div>
       </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4'>
-        {/* {records.map((record: Record) => (
+        {records.map((record: Record) => (
           <RecordItem key={record.id} record={record} />
-        ))} */}
+        ))}
       </div>
     </div>
   );

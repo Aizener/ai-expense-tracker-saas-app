@@ -27,8 +27,8 @@ async function getUserRecord(): Promise<{
 
     return { record, daysWithRecords };
   } catch (error) {
-    console.error('Error fetching user record:', error); // Log the error
-    return { error: 'Database error' };
+    console.error('查询失败:', error); // Log the error
+    return { error: '查询失败' };
   }
 }
 

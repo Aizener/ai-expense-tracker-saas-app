@@ -11,7 +11,7 @@ async function getBestWorstExpense(): Promise<{
   const { userId } = await auth();
 
   if (!userId) {
-    return { error: 'User not found' };
+    return { error: '用户不存在！' };
   }
 
   try {
@@ -32,8 +32,8 @@ async function getBestWorstExpense(): Promise<{
 
     return { bestExpense, worstExpense };
   } catch (error) {
-    console.error('Error fetching expense amounts:', error); // Log the error
-    return { error: 'Database error' };
+    console.error('获取支出金额时出错:', error); // Log the error
+    return { error: '操作失败！' };
   }
 }
 

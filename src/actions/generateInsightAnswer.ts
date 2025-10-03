@@ -41,6 +41,6 @@ export async function generateInsightAnswer(question: string): Promise<string> {
     return answer;
   } catch (error) {
     console.error('Error generating insight answer:', error);
-    return 'I\'m unable to provide a detailed answer at the moment. Please try refreshing the insights or check your connection.';
+    return '目前我无法提供详细答案。请尝试刷新洞察或检查您的连接。';
   }
 }

@@ -11,7 +11,7 @@ async function getRecords(): Promise<{
   const { userId } = await auth();
 
   if (!userId) {
-    return { error: 'User not found' };
+    return { error: '用户不存在！' };
   }
 
   try {
@@ -25,8 +25,8 @@ async function getRecords(): Promise<{
 
     return { records };
   } catch (error) {
-    console.error('Error fetching records:', error);
-    return { error: 'Database error' };
+    console.error('获取记录时出错:', error);
+    return { error: '操作失败！' };
   }
 }
 

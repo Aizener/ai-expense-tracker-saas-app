@@ -66,10 +66,10 @@ export async function getAIInsights(): Promise<AIInsight[]> {
       {
         id: 'error-1',
         type: 'warning',
-        title: 'Insights Temporarily Unavailable',
+        title: '分析失败',
         message:
-          'We\'re having trouble analyzing your expenses right now. Please try again in a few minutes.',
-        action: 'Retry analysis',
+          '当前无法分析您的支出，请稍后再试。',
+        action: '重试',
         confidence: 0.5,
       },
     ];
