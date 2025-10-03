@@ -2,7 +2,6 @@
 
 import {
   BarElement,
-  BarOptions,
   CategoryScale,
   Chart as ChartJS,
   ChartOptions,
