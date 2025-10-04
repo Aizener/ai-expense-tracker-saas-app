@@ -1,6 +1,4 @@
 'use server';
-export const runtime = 'nodejs';
-
 import { auth } from '@clerk/nextjs/server';
 
 import { AIInsight, ExpenseRecord,generateExpenseInsights } from '@/lib/ai';
