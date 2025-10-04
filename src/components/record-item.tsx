@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-import deleteRecord from '@/actions/deleteRecord';
+import deleteRecord from '@/app/actions/deleteRecord';
 import { getCategoryLabel } from '@/lib/category';
 import { Record } from '@/types/record';
 

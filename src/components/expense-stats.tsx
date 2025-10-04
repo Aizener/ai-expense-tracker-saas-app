@@ -1,7 +1,7 @@
 import React from 'react';
 
-import getBestWorstExpense from '@/actions/getBestWorstExpense';
-import getUserRecord from '@/actions/getUserRecord';
+import getBestWorstExpense from '@/app/actions/getBestWorstExpense';
+import getUserRecord from '@/app/actions/getUserRecord';
 
 const ExpenseStats = async () => {
   try {

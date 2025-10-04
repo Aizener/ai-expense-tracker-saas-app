@@ -1,4 +1,4 @@
-import getRecords from '@/actions/getRecords';
+import getRecords from '@/app/actions/getRecords';
 import { Record as RecordType } from '@/types/record';
 
 import PaginationComp from './pagination';

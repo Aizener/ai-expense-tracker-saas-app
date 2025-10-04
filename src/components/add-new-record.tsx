@@ -3,8 +3,8 @@ import { format } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 import { useRef, useState } from 'react';
 
-import addExpenseRecord from '@/actions/addExpenseRecord';
-import { suggestCategory } from '@/actions/suggestCategory';
+import addExpenseRecord from '@/app/actions/addExpenseRecord';
+import { suggestCategory } from '@/app/actions/suggestCategory';
 import { categories, getCategoryLabel } from '@/lib/category';
 
 import { Calendar } from './ui/calendar';

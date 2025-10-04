@@ -1,4 +1,4 @@
-import getRecords from '@/actions/getRecords';
+import getRecords from '@/app/actions/getRecords';
 
 import BarChart from './bar-chart';
 

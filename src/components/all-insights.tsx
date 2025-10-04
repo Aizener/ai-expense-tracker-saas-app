@@ -3,8 +3,8 @@
 
 import { useEffect,useState } from 'react';
 
-import { generateInsightAnswer } from '@/actions/generateInsightAnswer';
-import { getAIInsights } from '@/actions/getAllInsights';
+import { generateInsightAnswer } from '@/app/actions/generateInsightAnswer';
+import { getAIInsights } from '@/app/actions/getAllInsights';
 import { useUser } from '@/lib/store/user';
 
 interface InsightData {
