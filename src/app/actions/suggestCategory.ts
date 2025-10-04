@@ -1,4 +1,5 @@
 'use server';
+export const runtime = 'nodejs';
 
 import { categorizeExpense } from '@/lib/ai';
 

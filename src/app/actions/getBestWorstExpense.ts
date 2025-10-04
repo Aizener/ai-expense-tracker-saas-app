@@ -1,4 +1,5 @@
 'use server';
+export const runtime = 'nodejs';
 import { auth } from '@clerk/nextjs/server';
 
 import { db } from '@/lib/db';
