@@ -18,7 +18,7 @@ const ExpenseStats = async () => {
     const averageExpense = validRecord / validCount;
 
     const totalDay = Object.keys(perDayWithRecords || {}).length;
-    const perDayExpense = validRecord / totalDay;
+    const perDayExpense = totalDay === 0 ? 0 : (validRecord / totalDay);
 
     return (
       <div className='bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-xl border border-gray-100/50 dark:border-gray-700/50 hover:shadow-2xl'>

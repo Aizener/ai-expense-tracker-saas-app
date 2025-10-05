@@ -1,5 +1,8 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
+import { currentUser } from '@clerk/nextjs/server';
 import { BadgeDollarSign, LogIn } from 'lucide-react';
+
+import { getOrCreateUser } from '@/app/actions/user';
 
 import SiteTitle from '../site-title';
 import ThemeButton from '../theme-button';
@@ -8,6 +11,10 @@ import AppMobileHeader from './app-mobile-header';
 import AppNav from './app-nav';
 
 async function AppHeader() {
+  const clerkUser = await currentUser();
+  if (clerkUser) {
+    getOrCreateUser(clerkUser);
+  }
   return (
     <header className="border-b fixed left-0 top-0 z-50 w-full h-16 bg-background/50 backdrop-blur-lg  px-4 lg:px-0">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-full">

@@ -69,7 +69,7 @@ export async function generateExpenseInsights(
     Taking China as an example, answer in Chinese and the unit is RMB(YUAN).`;
 
     const completion = await openai.chat.completions.create({
-      model: 'x-ai/grok-4-fast:free',
+      model: 'meituan/longcat-flash-chat:free',
       messages: [
         {
           role: 'system',
@@ -139,7 +139,7 @@ export async function generateExpenseInsights(
 export async function categorizeExpense(description: string): Promise<string> {
   try {
     const completion = await openai.chat.completions.create({
-      model: 'x-ai/grok-4-fast:free',
+      model: 'meituan/longcat-flash-chat:free',
       messages: [
         {
           role: 'system',
@@ -156,6 +156,7 @@ export async function categorizeExpense(description: string): Promise<string> {
     });
 
     const category = completion.choices[0].message.content?.trim();
+    console.log('%c [ category ]-159', 'font-size:13px; background:skyblue; color:#bf2c9f;', JSON.stringify(completion, null, 2));
 
     const validCategories = [
       'Food',
@@ -203,7 +204,7 @@ export async function generateAIAnswer(
     Taking China as an example, answer in Chinese and the unit is RMB(YUAN).`;
 
     const completion = await openai.chat.completions.create({
-      model: 'x-ai/grok-4-fast:free',
+      model: 'meituan/longcat-flash-chat:free',
       messages: [
         {
           role: 'system',
